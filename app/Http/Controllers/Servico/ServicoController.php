@@ -3,37 +3,60 @@
 namespace App\Http\Controllers\Servico;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ServicoRequest;
+use App\Models\Servico;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ServicoController extends Controller
 {
+    /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW SERVIÇO
+    ****************************************************************************** */
     public function index()
     {
-        //
+        $servicos = Servico::all();
+        return view('servico.index', compact('servicos'));
     }
 
     public function create()
     {
-        //
+        $title  = 'Cadastrar Serviço';
+        $action = route('servicos.store');
+        return view('servico.form', compact('title', 'action'));
     }
 
-    public function store(Request $request)
+    /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW DE CADASTRO DO SERVIÇO
+    ****************************************************************************** */
+    public function store(ServicoRequest $request)
     {
-        //
+        Servico::create($request->all());
+        return Redirect::route('servicos.index');
     }
 
+    /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW EDIÇÃO DO SERVIÇO
+    ****************************************************************************** */
     public function edit($id)
     {
-        //
+        $servico = Servico::find($id);
+        $title   = 'Editar Serviço';
+        $action  = route('servicos.update', $servico->id);
+        return view('servico.form', compact('servico', 'title', 'action'));
     }
 
-    public function update(Request $request, $id)
+    /* MÉTODO RESPONSÁVEL EM ATUALIZAR O SERVIÇO
+    ****************************************************************************** */
+    public function update(ServicoRequest $request, $id)
     {
-        //
+        $servico = Servico::find($id);
+        $servico->update($request->all());
+        return Redirect::route('servicos.index');
     }
 
+    /* MÉTODO RESPONSÁVEL EM DELETAR O SERVIÇO
+    ****************************************************************************** */
     public function destroy($id)
     {
-        //
+        Servico::destroy($id);
+        return Redirect::route('servicos.index');
     }
 }

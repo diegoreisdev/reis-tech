@@ -1,0 +1,13 @@
+.form-del{
+    display: inline;
+}
+
+.btn-del{
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.linkhover:hover{
+    background-color: #ff550f;
+    border-radius: 5px;
+}

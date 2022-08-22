@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     {{-- CSS --}}
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset("css/form.css")}}">
 </head>
 
 <body>    
@@ -27,7 +28,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="collapseMenu">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link text-primary" aria-current="page" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-primary" aria-current="page" href="{{ route('home.index') }}">Home</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Clientes
@@ -42,8 +43,8 @@
                                 Serviços
                             </a>
                             <ul class="dropdown-menu ulhover">
-                                <li class="nav-item"><a class="nav-link dropdown-item text-light linkhover" href="#">Cadastrar Serviço</a></li>
-                                <li class="nav-item"><a class="nav-link dropdown-item text-light linkhover" href="#">Listar Serviços</a></li>
+                                <li class="nav-item"><a class="nav-link dropdown-item text-light linkhover" href="{{ route('servicos.create') }}">Cadastrar Serviço</a></li>
+                                <li class="nav-item"><a class="nav-link dropdown-item text-light linkhover" href="{{ route('servicos.index') }}">Listar Serviços</a></li>
                             </ul>
                         </li>
                     </ul>
