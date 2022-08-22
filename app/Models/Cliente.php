@@ -12,6 +12,12 @@ class Cliente extends Model
     protected $table = 'clientes';
     protected $fillable = ['nome', 'contato', 'endereco'];
 
+    /* MÉTODO RESPONSÁVEL EM BUSCAR CLIENTE */
+    public static function procurar($procurar)
+    {
+        return self::where('nome', 'LIKE', "%{$procurar}%")->orderBy('nome')->paginate(5);
+    }
+
     public function servicos()
     {
         return $this->belongsToMany(Servico::class)->withTimestamps();

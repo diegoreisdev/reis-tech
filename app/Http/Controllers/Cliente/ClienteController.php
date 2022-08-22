@@ -13,9 +13,11 @@ class ClienteController extends Controller
 {
     /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW CLIENTE
     ****************************************************************************** */
-    public function index()
+    public function index(Request $request)
     {
         $clientes = Cliente::all();
+        /* Método responsável pela busca do cliente */
+        $clientes = Cliente::procurar($request->procurar);
         return view('clientes.index', compact('clientes'));
     }
 

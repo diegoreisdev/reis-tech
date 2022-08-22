@@ -12,9 +12,11 @@ class ServicoController extends Controller
 {
     /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW SERVIÇO
     ****************************************************************************** */
-    public function index()
+    public function index(Request $request)
     {
         $servicos = Servico::all();
+        /* Método responsável pela busca do serviço */
+        $servicos = Servico::procurar($request->procurar);
         return view('servico.index', compact('servicos'));
     }
 

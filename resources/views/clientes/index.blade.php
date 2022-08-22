@@ -4,6 +4,13 @@
 @section('content')
 <section class="row">
 
+    <div class="text-primary pt-3 mx-2">Procurar cliente</div>
+    {{-- FORMULÁRIO DE PROCURA --}}
+    <form action="{{ route('clientes.index') }}" method="GET" class="d-flex justify-content-between my-2 ">
+        <input class="form-control shadow-none rounded-pill p-2 mx-1 text-light" name="procurar" type="text">
+        <button class="btn col-sm-2 btn-primary rounded-pill">Procurar</button>
+    </form>
+    
     {{-- TABELA DE CLIENTES --}}
     <h3 class="text-center my-3">Clientes Cadastrados</h3>
     <table class="table text-light">
