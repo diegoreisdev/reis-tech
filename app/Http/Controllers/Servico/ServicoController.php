@@ -20,6 +20,8 @@ class ServicoController extends Controller
         return view('servico.index', compact('servicos'));
     }
 
+    /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW DE CADASTRO DO SERVIÇO
+    ****************************************************************************** */
     public function create()
     {
         $title  = 'Cadastrar Serviço';
@@ -27,12 +29,12 @@ class ServicoController extends Controller
         return view('servico.form', compact('title', 'action'));
     }
 
-    /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW DE CADASTRO DO SERVIÇO
+    /* MÉTODO RESPONSÁVEL EM SALVAR O SERVIÇO
     ****************************************************************************** */
     public function store(ServicoRequest $request)
     {
         Servico::create($request->all());
-        return Redirect::route('servicos.index');
+        return Redirect::route('servicos.index')->with('servico-store', "Serviço $request->servico criado com sucesso!");
     }
 
     /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW EDIÇÃO DO SERVIÇO
@@ -51,7 +53,7 @@ class ServicoController extends Controller
     {
         $servico = Servico::find($id);
         $servico->update($request->all());
-        return Redirect::route('servicos.index');
+        return Redirect::route('servicos.index')->with('servico-atualizado', "Serviço $request->servico atualizado com sucesso!");
     }
 
     /* MÉTODO RESPONSÁVEL EM DELETAR O SERVIÇO
@@ -59,6 +61,6 @@ class ServicoController extends Controller
     public function destroy($id)
     {
         Servico::destroy($id);
-        return Redirect::route('servicos.index');
+        return Redirect::route('servicos.index')->with('servico-excluído', "Serviço excluído com sucesso!");
     }
 }

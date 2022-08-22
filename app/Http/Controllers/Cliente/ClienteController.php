@@ -37,7 +37,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::create($request->all());
         $cliente->servicos()->sync($request->servicos);
-        return Redirect::route('clientes.index');
+        return Redirect::route('clientes.index')->with('cliente-store', "Cliente $request->nome criado com sucesso!");
     }
 
     /* MÉTODO RESPONSÁVEL EM REDERIZAR A VIEW DE DETALHES DO CLIENTE
@@ -67,7 +67,7 @@ class ClienteController extends Controller
         $cliente = Cliente::find($id);
         $cliente->update($request->all());
         $cliente->servicos()->sync($request->servicos);
-        return Redirect::route('clientes.index');
+        return Redirect::route('clientes.index')->with('cliente-atualizado', "Cliente $request->nome atualizado com sucesso!");
     }
 
     /* MÉTODO RESPONSÁVEL EM DELETAR O CLIENTE
@@ -75,6 +75,6 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         Cliente::destroy($id);
-        return Redirect::route('clientes.index');
+        return Redirect::route('clientes.index')->with('cliente-excluido', "Cliente excluído com sucesso!");
     }
 }

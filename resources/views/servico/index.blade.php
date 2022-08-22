@@ -3,6 +3,8 @@
 
 @section('content')
 <section class="row">
+    {{-- MENSSAGENS DE RETORNO --}}
+    @include('messages.msgs')
 
     <div class="text-primary pt-3 mx-2">Procurar serviço</div>
     {{-- FORMULÁRIO DE PROCURA --}}
