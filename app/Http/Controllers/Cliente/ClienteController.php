@@ -8,6 +8,7 @@ use App\Models\Cliente;
 use App\Models\Servico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use PDF;
 
 class ClienteController extends Controller
 {
@@ -76,5 +77,16 @@ class ClienteController extends Controller
     {
         Cliente::destroy($id);
         return Redirect::route('clientes.index')->with('cliente-excluido', "Cliente excluído com sucesso!");
+    }
+
+        /* MÉTODO RESPONSÁVEL EM GERAR O PDF
+    ****************************************************************************** */
+    public function gerarPdf($id)
+    {
+        $cliente = Cliente::with('servicos')->find($id);
+        $total   = $cliente->servicos()->sum('valor');
+
+        $pdf = PDF::loadView('clientes.pdf', compact('cliente', 'total'));
+        return $pdf->setPaper('A4')->stream("Nota-$cliente->nome.pdf");
     }
 }

@@ -41,6 +41,9 @@
     </div>
     <hr class="text-primary">
 
+    @if ($total != 0)        
+        <div class="text-end mb-3"><a class="btn btn-outline-primary text-end" href="{{route('cliente.pdf', $cliente->id)}}">Imprimir</a></div>
+    @endif
 </section>
 
 @endsection
