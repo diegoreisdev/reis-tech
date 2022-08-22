@@ -34,8 +34,8 @@
                             Clientes
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link dropdown-item text-light linkhover" href="#">Cadastrar Cliente</a></li>
-                                <li class="nav-item"><a class="nav-link dropdown-item text-light linkhover" href="#">Listar Clientes</a></li>
+                                <li class="nav-item"><a class="nav-link dropdown-item text-light linkhover" href="{{ route('clientes.create') }}">Cadastrar Cliente</a></li>
+                                <li class="nav-item"><a class="nav-link dropdown-item text-light linkhover" href="{{ route('clientes.index') }}">Listar Clientes</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

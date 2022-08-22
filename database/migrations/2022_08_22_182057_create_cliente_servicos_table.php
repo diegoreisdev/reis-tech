@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('cliente_servicos', function (Blueprint $table) {
+        Schema::create('cliente_servico', function (Blueprint $table) {
             $table->foreignId('servico_id')->constrained('servicos')->onDelete('cascade');
             $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
             $table->timestamps();
