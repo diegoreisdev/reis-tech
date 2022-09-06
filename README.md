@@ -4,7 +4,7 @@ As faturas serão geradas por clientes. O valor da fatura será calculado confor
 
 ## Tecnologias usadas
 - PHP 8.1
-- Laravel 9
+- Laravel 9.2
 - Bootstrap-select 1.13.1 
 - Bootstrap 5.2
 - Ajax
